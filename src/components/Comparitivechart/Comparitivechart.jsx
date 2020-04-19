@@ -6,9 +6,10 @@ import styles from './Comparitivechart.module.css';
 const Comparitivechart = ({ data: { confirmed, recovered, deaths }, country, 
     CompData: { confirmed: confirmedComp, recovered: recoveredComp, deaths: deathsComp }, CompCountry }) => {
    
-    console.log(CompCountry);
-    console.log(confirmed);
-    
+    if(country ===''){
+      country='World';
+    }
+
     const barChart = (
         confirmedComp ? (
           <Bar
