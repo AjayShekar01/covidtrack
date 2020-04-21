@@ -18,6 +18,48 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
       fetchMyAPI();
     }, []);
 
+  const options = {
+    responsive: true, scales: {
+      yAxes: [
+        {
+          type: 'linear',
+          ticks: {
+            beginAtZero: true,
+            max: undefined,
+            precision: 0,
+          },
+          scaleLabel: {
+            display: false,
+            labelString: 'Total Cases',
+          },
+        },
+      ],
+      xAxes: [
+        {
+          type: 'time',
+          time: {
+            unit: 'day',
+            tooltipFormat: 'MMM DD',
+            stepSize: 7,
+            displayFormats: {
+              millisecond: 'MMM DD',
+              second: 'MMM DD',
+              minute: 'MMM DD',
+              hour: 'MMM DD',
+              day: 'MMM DD',
+              week: 'MMM DD',
+              month: 'MMM DD',
+              quarter: 'MMM DD',
+              year: 'MMM DD',
+            },
+          },
+          gridLines: {
+            color: 'rgba(0, 0, 0, 0)',
+          },
+        },
+      ],
+    },
+  };
 
     const barChart = (
         confirmed ? (
@@ -44,7 +86,7 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
         dailyData[0] ? (
           <Line
             data={{
-              labels: dailyData.map(({ date }) => date),
+              labels: dailyData.map(({ date }) => new Date(date).toDateString().split(' ').slice(1).join(' ')),
               datasets: [{
                 data: dailyData.map((data) => data.confirmed),
                 label: 'Infected',
@@ -58,7 +100,7 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
                 fill: true,
               },
               ],
-            }}
+            }} options={options}
           />
         ) : null
       );

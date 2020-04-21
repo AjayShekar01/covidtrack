@@ -18,8 +18,9 @@ class App extends React.Component {
 
   async componentDidMount() {
     const data = await fetchData();
-
-    this.setState({ data });
+    //By default compare with data of india
+    const CompData = await fetchData('India');
+    this.setState({ data, CompData, CompCountry: 'India' });
   }
 
   handleCountryChange = async (country) => {
@@ -40,10 +41,10 @@ class App extends React.Component {
     <div className={styles.container}>
       <img className={styles.image} src={image} alt="COVID-19" />
       <Cards data={data}/>
-      <h1>COVID tracker of Countries</h1>
+      <h1>COVID tracker of Countries - {country?country:'World'}</h1>
       <CountryPicker handleCountryChange={this.handleCountryChange} />
       <Chart data={data} country={country} /> 
-      <h1>Comparision Chart</h1>
+      <h1>Comparision Chart - {country?country:'World'} vs {CompCountry}</h1>
       <CompCountryPicker handleCompCountryChange={this.handleCompCountryChange} />      
       <Comparitivechart data={data} country={country} CompData = {CompData} CompCountry = {CompCountry}/>
     </div>
