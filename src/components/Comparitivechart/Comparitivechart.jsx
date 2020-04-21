@@ -14,8 +14,8 @@ const Comparitivechart = ({ data: { confirmed, recovered, deaths }, country,
         confirmedComp ? (
           <Bar
             data={{
-              labels: [`${country} Infected`,`${country} recovered`,`${country} deaths`,
-              `${CompCountry} Infected`,`${CompCountry} recovered`,`${CompCountry} deaths` ],
+              labels: [`${country} Infected`,`${country} Recovered`,`${country} Deaths`,
+              `${CompCountry} Infected`,`${CompCountry} Recovered`,`${CompCountry} Deaths` ],
               datasets: [
                 {
                   label: 'People',
@@ -27,7 +27,7 @@ const Comparitivechart = ({ data: { confirmed, recovered, deaths }, country,
             }}
             options={{
               legend: { display: false },
-              title: { display: true, text: `Comparision chart - ${country} vs ${CompCountry}` },
+              title: { display: true, text: `Comparison chart of ${country} vs ${CompCountry}` },
             }}
           />
         ) : null

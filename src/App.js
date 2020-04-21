@@ -44,7 +44,7 @@ class App extends React.Component {
       <h1>COVID tracker of Countries - {country?country:'World'}</h1>
       <CountryPicker handleCountryChange={this.handleCountryChange} />
       <Chart data={data} country={country} /> 
-      <h1>Comparision Chart - {country?country:'World'} vs {CompCountry}</h1>
+      <h1>Comparison Chart - {country?country:'World'} vs {CompCountry}</h1>
       <CompCountryPicker handleCompCountryChange={this.handleCompCountryChange} />      
       <Comparitivechart data={data} country={country} CompData = {CompData} CompCountry = {CompCountry}/>
     </div>
